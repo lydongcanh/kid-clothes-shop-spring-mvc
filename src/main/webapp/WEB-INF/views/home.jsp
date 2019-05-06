@@ -7,9 +7,20 @@
 	<link href="resources/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<h1>Hello world!!!</h1>
-
-	<p>The time on the server is ${serverTime}.</p>
+	<jsp:include page="_header.jsp"></jsp:include>
+	
+	<div class="container">
+		<div class="row">
+		<c:forEach items="${productListModel.products}" var="product">
+			<jsp:include page="_product.jsp">
+				<jsp:param name="imageUrl" value="${product.imageUrl}"/>
+				<jsp:param name="name" value="${product.name}"/>
+				<jsp:param name="description" value="${product.description}"/>
+				<jsp:param name="gender" value="${product.gender.toString()}"/>
+			</jsp:include>
+		</c:forEach>
+		</div>
+	</div>
 	
 	<jsp:include page="_footer.jsp"></jsp:include>
 </body>

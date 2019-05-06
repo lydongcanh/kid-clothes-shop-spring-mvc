@@ -3,8 +3,8 @@
 
 <html>
 <body>
-	<footer class="page-footer">
-		<p class="font-weight-light">Lập trình web nâng cao với Java - Nhóm 28</p>
+	<footer class="navbar navbar-dark bg-dark">
+		<p class="text-center text-light">Lập trình web nâng cao với Java - Nhóm 28</p>
 	</footer>
 </body>
 </html>

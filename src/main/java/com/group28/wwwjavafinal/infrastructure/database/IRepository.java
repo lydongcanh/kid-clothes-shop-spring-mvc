@@ -6,7 +6,8 @@ import java.util.function.Predicate;
 public interface IRepository<T> {
 	List<T> selectAll();
 	T select(Predicate<T> predicate);
-	boolean Add(T obj);
-	boolean Delete(T obj);
-	boolean Update(T obj);
+	int count();
+	boolean add(T obj);
+	boolean delete(T obj);
+	boolean update(T obj);
 }
