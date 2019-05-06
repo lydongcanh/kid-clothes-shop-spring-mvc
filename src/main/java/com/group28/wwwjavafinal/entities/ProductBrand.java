@@ -3,7 +3,17 @@ package com.group28.wwwjavafinal.entities;
 public class ProductBrand extends BaseEntity {
 	private String name;
 	private String description;
+	private String imageUrl;
+
+	public ProductBrand() {	
+	}
 	
+	public ProductBrand(String name, String description, String imageUrl) {
+		this.name = name;
+		this.description = description;
+		this.imageUrl = imageUrl;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -18,5 +28,13 @@ public class ProductBrand extends BaseEntity {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }

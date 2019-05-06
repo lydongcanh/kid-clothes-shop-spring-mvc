@@ -4,9 +4,21 @@ public class Product extends BaseEntity {
 	private String name;
 	private String description;
 	private String imageUrl;
-	private ProductBrand brand;
-	private ProductSize size;
-	private ProductType type;
+	private Gender gender;
+	private int brandId;
+	private int typeId;
+
+	public Product() {
+	}
+
+	public Product(String name, String description, String imageUrl, Gender gender, int brandId, int typeId) {
+		this.name = name;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.gender = gender;
+		this.brandId = brandId;
+		this.typeId = typeId;
+	}
 
 	public String getName() {
 		return name;
@@ -32,27 +44,27 @@ public class Product extends BaseEntity {
 		this.imageUrl = imageUrl;
 	}
 
-	public ProductBrand getBrand() {
-		return brand;
+	public Gender getGender() {
+		return gender;
 	}
 
-	public void setBrand(ProductBrand brand) {
-		this.brand = brand;
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 
-	public ProductSize getSize() {
-		return size;
+	public int getBrandId() {
+		return brandId;
 	}
 
-	public void setSize(ProductSize size) {
-		this.size = size;
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
 	}
 
-	public ProductType getType() {
-		return type;
+	public int getTypeId() {
+		return typeId;
 	}
 
-	public void setType(ProductType type) {
-		this.type = type;
-	}	
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
+	}
 }

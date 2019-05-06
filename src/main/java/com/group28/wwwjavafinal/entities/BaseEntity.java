@@ -2,7 +2,7 @@ package com.group28.wwwjavafinal.entities;
 
 public class BaseEntity {
 	private int id;
-
+	
 	public int getId() {
 		return id;
 	}
