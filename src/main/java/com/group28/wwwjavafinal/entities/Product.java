@@ -1,9 +1,17 @@
 package com.group28.wwwjavafinal.entities;
 
 public class Product extends BaseEntity {
+	
+	public enum Gender {
+		Boy,
+		Girl,
+		Unisex
+	}
+	
 	private String name;
 	private String description;
 	private String imageUrl;
+	private float price;
 	private Gender gender;
 	private int brandId;
 	private int typeId;
@@ -38,6 +46,15 @@ public class Product extends BaseEntity {
 
 	public String getImageUrl() {
 		return imageUrl;
+	}
+
+	
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 	public void setImageUrl(String imageUrl) {
