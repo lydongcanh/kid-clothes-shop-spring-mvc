@@ -22,9 +22,8 @@ public class CustomerJdbcRepository extends BaseJdbcRepository<Customer>{
 
 	@Override
 	protected String getAddQuery(Customer obj) {
-		return "Insert into Customers(Name, Email, HouseNumber, Street, District, City) values('"
+		return "Insert into Customers(Name, HouseNumber, Street, District, City) values('"
 			+ obj.getName() + "', '"
-			+ obj.getEmail() + "', '"
 			+ obj.getAddress().getHouseNumber() + "', '"
 			+ obj.getAddress().getStreet() + "', '"
 			+ obj.getAddress().getDistrict() + "', '"
@@ -40,7 +39,6 @@ public class CustomerJdbcRepository extends BaseJdbcRepository<Customer>{
 	protected String getUpdateQuery(Customer obj) {
 		return "Update Customers set "
 			+ "Name=N'" + obj.getName() + "', "
-			+ "Email='" + obj.getEmail() + "', "
 			+ "HouseNumber='" + obj.getAddress().getHouseNumber() + "', " 
 			+ "Street=N'" + obj.getAddress().getStreet() + "', "
 			+ "District=N'" + obj.getAddress().getDistrict() + "', "
@@ -54,16 +52,15 @@ public class CustomerJdbcRepository extends BaseJdbcRepository<Customer>{
 			@Override
 			public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Address address = new Address() {{
-					setHouseNumber(rs.getString(4));
-					setStreet(rs.getString(5));
-					setDistrict(rs.getString(6));
-					setCity(rs.getString(7));
+					setHouseNumber(rs.getString(3));
+					setStreet(rs.getString(4));
+					setDistrict(rs.getString(5));
+					setCity(rs.getString(6));
 				}};
 				
 				return new Customer() {{
 					setId(rs.getInt(1));
 					setName(rs.getString(2));
-					setEmail(rs.getString(3));
 					setAddress(address);
 				}};
 			}

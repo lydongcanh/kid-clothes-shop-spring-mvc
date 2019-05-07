@@ -23,7 +23,7 @@ public class AccountJdbcRepository extends BaseJdbcRepository<Account> {
 
 	@Override
 	protected String getAddQuery(Account obj) {
-		return "Insert into Accounts(UserName, Password, IsActivated, IsAdmin) values('"
+		return "Insert into Accounts(Email, Password, IsActivated, IsAdmin) values('"
 			+ obj.getEmail() + "', '"
 			+ obj.getPassword() + "', "
 			+ obj.isActivated() + ", "
