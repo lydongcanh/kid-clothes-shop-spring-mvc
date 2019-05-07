@@ -9,7 +9,7 @@
 <body>
 	<jsp:include page="_header.jsp"></jsp:include>
 	
-	<div class="container">
+	<div class="container" style="padding:5px;">
 		<div class="row">
 		<c:forEach items="${productListModel.products}" var="product">
 			<jsp:include page="_product.jsp">

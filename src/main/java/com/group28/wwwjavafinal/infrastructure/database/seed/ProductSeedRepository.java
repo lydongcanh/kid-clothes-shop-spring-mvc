@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.group28.wwwjavafinal.entities.Gender;
 import com.group28.wwwjavafinal.entities.Product;
 import com.group28.wwwjavafinal.infrastructure.database.IRepository;
 
@@ -17,19 +16,19 @@ public class ProductSeedRepository implements IRepository<Product> {
 	
 	public ProductSeedRepository() {		
 		seedProducts = new ArrayList<Product>(Arrays.asList(  
-			new Product("Áo thun 01", "", url1, Gender.Boy, 1, 1){{ setId(1); }},
-			new Product("Áo khoác 01", "", url2, Gender.Girl, 2, 4){{ setId(2); }},
+			new Product("Áo thun 01", "", url1, Product.Gender.Boy, 1, 1){{ setId(1); }},
+			new Product("Áo khoác 01", "", url2, Product.Gender.Girl, 2, 4){{ setId(2); }},
 			
-			new Product("Áo thun 01", "", url1, Gender.Boy, 1, 1){{ setId(3); }},
-			new Product("Áo khoác 01", "", url2, Gender.Girl, 2, 4){{ setId(4); }},
-			new Product("Áo thun 01", "", url1, Gender.Boy, 1, 1){{ setId(5); }},
-			new Product("Áo khoác 01", "", url2, Gender.Girl, 2, 4){{ setId(6); }},
-			new Product("Áo thun 01", "", url1, Gender.Boy, 1, 1){{ setId(7); }},
-			new Product("Áo khoác 01", "", url2, Gender.Girl, 2, 4){{ setId(8); }},
-			new Product("Áo thun 01", "", url1, Gender.Boy, 1, 1){{ setId(9); }},
-			new Product("Áo khoác 01", "", url2, Gender.Girl, 2, 4){{ setId(10); }},
-			new Product("Áo thun 01", "", url1, Gender.Boy, 1, 1){{ setId(11); }},
-			new Product("Áo khoác 01", "", url2, Gender.Girl, 2, 4){{ setId(12); }}
+			new Product("Áo thun 01", "", url1, Product.Gender.Boy, 1, 1){{ setId(3); }},
+			new Product("Áo khoác 01", "", url2, Product.Gender.Girl, 2, 4){{ setId(4); }},
+			new Product("Áo thun 01", "", url1, Product.Gender.Boy, 1, 1){{ setId(5); }},
+			new Product("Áo khoác 01", "", url2, Product.Gender.Girl, 2, 4){{ setId(6); }},
+			new Product("Áo thun 01", "", url1, Product.Gender.Boy, 1, 1){{ setId(7); }},
+			new Product("Áo khoác 01", "", url2, Product.Gender.Girl, 2, 4){{ setId(8); }},
+			new Product("Áo thun 01", "", url1, Product.Gender.Boy, 1, 1){{ setId(9); }},
+			new Product("Áo khoác 01", "", url2, Product.Gender.Girl, 2, 4){{ setId(10); }},
+			new Product("Áo thun 01", "", url1, Product.Gender.Boy, 1, 1){{ setId(11); }},
+			new Product("Áo khoác 01", "", url2, Product.Gender.Girl, 2, 4){{ setId(12); }}
 		));
 	}
 	
