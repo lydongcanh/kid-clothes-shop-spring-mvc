@@ -19,6 +19,7 @@ import com.group28.wwwjavafinal.infrastructure.database.seed.ProductBrandSeedRep
 import com.group28.wwwjavafinal.infrastructure.database.seed.ProductSeedRepository;
 import com.group28.wwwjavafinal.infrastructure.database.seed.ProductSizeSeedRepository;
 import com.group28.wwwjavafinal.infrastructure.database.seed.ProductTypeSeedRepository;
+import com.group28.wwwjavafinal.models.PaginationModel;
 import com.group28.wwwjavafinal.models.ProductListModel;
 
 /**
@@ -52,7 +53,11 @@ public class HomeController {
 			PRODUCT_PER_PAGE,
 			pageIndex,
 			productRepository.count()
-		);
+		) {{
+			setBrands(brandRepository.selectAll());
+			setSizes(sizeRepository.selectAll());
+			setTypes(typesRepository.selectAll());
+		}};
 		
 		model.addAttribute("productListModel", productListModel);
 		return "home";

@@ -4,11 +4,11 @@
 <html>
 <body>
 	<div class="card" style="width: 18rem;">
-		<img class="card-img-top" style="height: 15vw;object-fit:cover;" src="${param.imageUrl}">
+		<h5 class="card-header">${param.name}</h5>
+		<img class="card-img-left" style="height:15vw;object-fit:cover;" src="${param.imageUrl}">
 		<div class="card-body">
-			<h5 class="card-title">${param.name}</h5>
-			<p class="card-text">${param.description}</p>
-			<p class="card-text">${param.gender}</p>
+			<p class="tag">Giá: ${param.price}$</p>
+			<a href="#" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
 		</div>
 	</div>
 </body>

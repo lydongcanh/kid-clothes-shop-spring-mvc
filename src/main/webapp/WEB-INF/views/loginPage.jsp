@@ -11,18 +11,20 @@
 <body>
 	<jsp:include page="_header.jsp"></jsp:include>
 	
-	<form:form action="login">
-		<div class="form-group">
-			<label for="username">Tài khoản</label> 
-			<input type="text" class="form-control" id="username" placeholder="Tài khoản"> 
-		</div>
-		<div class="form-group">
-			<label for="password">Mật khẩu</label> 
-			<input type="password" class="form-control" id="password" placeholder="Mật khẩu">
-		</div>
-		<button type="submit" class="btn btn-primary">Đăng nhập</button>
-	</form:form>
-		
+	<div class="container-fluid">
+		<form:form action="login">
+			<div class="form-group">
+				<label for="username">Tài khoản</label> 
+				<input type="text" class="form-control" id="username" placeholder="Tài khoản"> 
+			</div>
+			<div class="form-group">
+				<label for="password">Mật khẩu</label> 
+				<input type="password" class="form-control" id="password" placeholder="Mật khẩu">
+			</div>
+			<button type="submit" class="btn btn-primary">Đăng nhập</button>
+		</form:form>
+	</div>
+	
 	<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>
