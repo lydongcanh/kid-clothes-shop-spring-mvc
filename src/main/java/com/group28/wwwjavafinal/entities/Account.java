@@ -1,7 +1,7 @@
 package com.group28.wwwjavafinal.entities;
 
 public class Account extends BaseEntity {
-	private String username;
+	private String email;
 	private String password;
 	private boolean isActivated;
 	private boolean isAdmin;
@@ -9,19 +9,19 @@ public class Account extends BaseEntity {
 	public Account() {
 	}
 	
-	public Account(String username, String password, boolean isActivated, boolean isAdmin) {
-		this.username = username;
+	public Account(String email, String password, boolean isActivated, boolean isAdmin) {
+		this.email = email;
 		this.password = password;
 		this.isActivated = isActivated;
 		this.isAdmin = isAdmin;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String username) {
+		this.email = username;
 	}
 	
 	public String getPassword() {

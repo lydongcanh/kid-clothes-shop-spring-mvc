@@ -24,7 +24,7 @@ public class AccountJdbcRepository extends BaseJdbcRepository<Account> {
 	@Override
 	protected String getAddQuery(Account obj) {
 		return "Insert into Accounts(UserName, Password, IsActivated, IsAdmin) values('"
-			+ obj.getUsername() + "', '"
+			+ obj.getEmail() + "', '"
 			+ obj.getPassword() + "', "
 			+ obj.isActivated() + ", "
 			+ obj.isAdmin() + ")";
@@ -38,7 +38,7 @@ public class AccountJdbcRepository extends BaseJdbcRepository<Account> {
 	@Override
 	protected String getUpdateQuery(Account obj) {
 		return "Update Accounts set "
-			+ "UserName='" + obj.getUsername() + "', "
+			+ "UserName='" + obj.getEmail() + "', "
 			+ "Password='" + obj.getPassword() + "', "
 			+ "IsActivated=" + (obj.isActivated() ? 1 : 0) + ", "
 			+ "IsAdmin=" + (obj.isAdmin() ? 1 : 0)
@@ -53,7 +53,7 @@ public class AccountJdbcRepository extends BaseJdbcRepository<Account> {
 			public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
 				return new Account() {{
 					setId(rs.getInt(1));
-					setUsername(rs.getString(2));
+					setEmail(rs.getString(2));
 					setPassword(rs.getString(3));
 					setActivated(rs.getBoolean(4));
 					setAdmin(rs.getBoolean(5));
