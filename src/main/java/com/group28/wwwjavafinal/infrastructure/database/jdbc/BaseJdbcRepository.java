@@ -14,7 +14,7 @@ import com.group28.wwwjavafinal.infrastructure.database.IRepository;
 @Repository
 public abstract class BaseJdbcRepository<T> implements IRepository<T> {
 
-	/*@Autowired*/
+	@Autowired
 	protected JdbcTemplate template;
 	
 	protected abstract String getSelectAllQuery();
@@ -58,5 +58,4 @@ public abstract class BaseJdbcRepository<T> implements IRepository<T> {
 	public boolean update(T obj) {
 		return template.update(getUpdateQuery(obj)) == 1;
 	}
-
 }

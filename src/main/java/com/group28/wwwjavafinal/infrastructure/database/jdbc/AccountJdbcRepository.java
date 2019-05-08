@@ -38,7 +38,7 @@ public class AccountJdbcRepository extends BaseJdbcRepository<Account> {
 	@Override
 	protected String getUpdateQuery(Account obj) {
 		return "Update Accounts set "
-			+ "UserName='" + obj.getEmail() + "', "
+			+ "Email='" + obj.getEmail() + "', "
 			+ "Password='" + obj.getPassword() + "', "
 			+ "IsActivated=" + (obj.isActivated() ? 1 : 0) + ", "
 			+ "IsAdmin=" + (obj.isAdmin() ? 1 : 0)
