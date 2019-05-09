@@ -3,17 +3,30 @@ package com.group28.wwwjavafinal.entities;
 public class Order extends BaseEntity {
 
 	public enum Status {
-		Pending, Shipped, Canceled
+		None, Pending, Shipped, Canceled;
+		
+		public static Status parse(String target) {
+			if (target.equalsIgnoreCase(Pending.toString()))
+				return Pending;
+			
+			if (target.equalsIgnoreCase(Shipped.toString()))
+				return Shipped;
+			
+			if (target.equalsIgnoreCase(Canceled.toString()))
+				return Canceled;
+			
+			return None;
+		}
 	}
 
 	private Address shipAddress;
 	private Status status;
-	private String customerId;
+	private int customerId;
 
 	public Order() {
 	}
 	
-	public Order(Address shipAddress, Status status, String customerId) {
+	public Order(Address shipAddress, Status status, int customerId) {
 		this.shipAddress = shipAddress;
 		this.status = status;
 		this.customerId = customerId;
@@ -35,11 +48,11 @@ public class Order extends BaseEntity {
 		this.status = status;
 	}
 
-	public String getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 }

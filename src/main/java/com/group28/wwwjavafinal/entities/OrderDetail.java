@@ -1,32 +1,32 @@
 package com.group28.wwwjavafinal.entities;
 
 public class OrderDetail extends BaseEntity {
-	private String productId;
-	private String orderId;
+	private int productId;
+	private int orderId;
 	private int quantity;
 
 	public OrderDetail() {
 	}
 	
-	public OrderDetail(String productId, String orderId, int quantity) {
+	public OrderDetail(int productId, int orderId, int quantity) {
 		this.productId = productId;
 		this.orderId = orderId;
 		this.quantity = quantity;
 	}
 
-	public String getProductId() {
+	public int getProductId() {
 		return productId;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 
-	public String getOrderId() {
+	public int getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
 

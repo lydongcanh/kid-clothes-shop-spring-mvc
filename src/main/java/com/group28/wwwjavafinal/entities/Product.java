@@ -3,9 +3,20 @@ package com.group28.wwwjavafinal.entities;
 public class Product extends BaseEntity {
 	
 	public enum Gender {
-		Boy,
-		Girl,
-		Unisex
+		None, Boy, Girl, Unisex;
+		
+		public static Gender parse(String target) {
+			if (target.equalsIgnoreCase(Boy.toString()))
+				return Boy;
+			
+			if (target.equalsIgnoreCase(Girl.toString()))
+				return Girl;
+			
+			if (target.equalsIgnoreCase(Unisex.toString()))
+				return Unisex;
+			
+			return None;
+		}
 	}
 	
 	private String name;
