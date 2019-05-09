@@ -3,14 +3,20 @@ package com.group28.wwwjavafinal.infrastructure.database.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.group28.wwwjavafinal.entities.Account;
 
-@Repository
 public class AccountJdbcRepository extends BaseJdbcRepository<Account> {
 
+	@Autowired(required = true)
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+	
 	@Override
 	protected String getSelectAllQuery() {
 		return "select * from Accounts";

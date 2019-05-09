@@ -3,12 +3,20 @@ package com.group28.wwwjavafinal.infrastructure.database.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.group28.wwwjavafinal.entities.ProductProductSize;
 
 public class ProductProductSizeJdbcRepository extends BaseJdbcRepository<ProductProductSize> {
 
+	@Autowired(required = true)
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+	
 	@Override
 	protected String getSelectAllQuery() {
 		return "Select * from Product_ProductSize";
@@ -21,8 +29,7 @@ public class ProductProductSizeJdbcRepository extends BaseJdbcRepository<Product
 
 	@Override
 	protected String getAddQuery(ProductProductSize obj) {
-		 return "Insert into Product_ProductSize(Product_ProductSizeId, ProductId, ProductSizeId, RemainedInStock) values("
-				+ obj.getId() + ", "
+		 return "Insert into Product_ProductSize(ProductId, ProductSizeId, RemainedInStock) values("
 				+ obj.getProductId() + ", "
 				+ obj.getProductSizeId() + ", "
 				+ obj.getRemainedInStock() + ")";

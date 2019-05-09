@@ -3,13 +3,21 @@ package com.group28.wwwjavafinal.infrastructure.database.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.group28.wwwjavafinal.entities.Address;
 import com.group28.wwwjavafinal.entities.Customer;
 
 public class CustomerJdbcRepository extends BaseJdbcRepository<Customer>{
 
+	@Autowired(required = true)
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+	
 	@Override
 	protected String getSelectAllQuery() {
 		return "Select * from Customers";

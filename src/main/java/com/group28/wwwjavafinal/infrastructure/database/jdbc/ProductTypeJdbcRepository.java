@@ -3,12 +3,20 @@ package com.group28.wwwjavafinal.infrastructure.database.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.group28.wwwjavafinal.entities.ProductType;
 
 public class ProductTypeJdbcRepository extends BaseJdbcRepository<ProductType> {
 
+	@Autowired(required = true)
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+	
 	@Override
 	protected String getSelectAllQuery() {
 		return "Select * from ProductTypes";
@@ -21,11 +29,10 @@ public class ProductTypeJdbcRepository extends BaseJdbcRepository<ProductType> {
 
 	@Override
 	protected String getAddQuery(ProductType obj) {
-		return "Insert into ProductTypes(ProductTypeId, Name, Description, ImageUrl) values("
-		+ obj.getId() + ", N'"
-		+ obj.getName() + "', N'"
-		+ obj.getDescription() + "', N'"
-		+ obj.getImageUrl() +  "')";
+		return "Insert into ProductTypes(Name, Description, ImageUrl) values(N'"
+			+ obj.getName() + "', N'"
+			+ obj.getDescription() + "', N'"
+			+ obj.getImageUrl() +  "')";
 	}
 
 	@Override

@@ -20,16 +20,56 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
+	
+	<context:component-scan base-package="com.group28.wwwjavafinal" />
+	
 	<!-- Jdbc configuration -->
-<!-- 	<beans:bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<beans:bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></beans:property>
-		<beans:property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=WWWJavaFinalProjectDb;integratedSecurity=true"></beans:property>
+		<beans:property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=WWWJavaFinalProjectDb;integratedSecurity=true;"></beans:property>
 	</beans:bean>
 	<beans:bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="ds"></beans:property>
-	</beans:bean> -->
-		
-	<context:component-scan base-package="com.group28.wwwjavafinal.controllers" />
+	</beans:bean>
+			
+	<beans:bean id="ajr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.AccountJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean> 
 	
+	<beans:bean id="cjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.CustomerJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="orjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.OrderDetailJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="ojr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.OrderJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="pbjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductBrandJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="ppsjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductProductSizeJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="psjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductSizeJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="pjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductsJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="ptjr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductTypeJdbcRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="testr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.TestRepository">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+
 </beans:beans>

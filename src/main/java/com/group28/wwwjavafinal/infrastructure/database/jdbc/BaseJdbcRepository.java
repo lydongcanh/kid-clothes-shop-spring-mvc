@@ -9,9 +9,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.group28.wwwjavafinal.controllers.HomeController;
 import com.group28.wwwjavafinal.infrastructure.database.IRepository;
 
-@Repository
 public abstract class BaseJdbcRepository<T> implements IRepository<T> {
 
 	@Autowired
@@ -26,22 +26,32 @@ public abstract class BaseJdbcRepository<T> implements IRepository<T> {
 	
 	@Override
 	public List<T> selectAll() {
+		HomeController.logger.info("selectAll: " + (template == null));
+		if (template == null) {		
+			return null;
+		}
+		
 		return template.query(getSelectAllQuery(), getRowMapperMapper());
 	}
 
 	@Override
 	public T select(Predicate<T> predicate) {	
 		try {
+			selectAll().stream().forEach(o -> HomeController.logger.info(o.toString()));
 			return selectAll().stream().filter(predicate).findFirst().get();
 		}
-		catch (NoSuchElementException e) {
+		catch (Exception e) {
 			return null;
 		}
 	}
 
 	@Override
 	public int count() {
-		return template.queryForObject(getCountQuery(), Integer.class);
+		try {
+			return template.queryForObject(getCountQuery(), Integer.class);
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
 	@Override

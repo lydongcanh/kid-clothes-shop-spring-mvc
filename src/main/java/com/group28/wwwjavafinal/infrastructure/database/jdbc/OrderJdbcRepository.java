@@ -3,13 +3,21 @@ package com.group28.wwwjavafinal.infrastructure.database.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import com.group28.wwwjavafinal.entities.Address;
 import com.group28.wwwjavafinal.entities.Order;
 
 public class OrderJdbcRepository extends BaseJdbcRepository<Order>{
 
+	@Autowired(required = true)
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+	
 	@Override
 	protected String getSelectAllQuery() {
 		return "Select * from Orders";
@@ -22,12 +30,11 @@ public class OrderJdbcRepository extends BaseJdbcRepository<Order>{
 
 	@Override
 	protected String getAddQuery(Order obj) {
-		return "Insert into Orders(OrderId, HouseNumber, Street, District, City, Status, CustomerId) values("
-				+ obj.getId() + ",'"
-				+ obj.getShipAddress().getHouseNumber() +"',N'"
-				+ obj.getShipAddress().getStreet() +"',N'"
-				+ obj.getShipAddress().getDistrict()+ "',N'"
-				+ obj.getShipAddress().getCity() + "',N'"
+		return "Insert into Orders(HouseNumber, Street, District, City, Status, CustomerId) values('"
+				+ obj.getShipAddress().getHouseNumber() +"', N'"
+				+ obj.getShipAddress().getStreet() +"', N'"
+				+ obj.getShipAddress().getDistrict()+ "', N'"
+				+ obj.getShipAddress().getCity() + "', N'"
 				+ obj.getStatus() + "',"
 				+ obj.getCustomerId() +
 				")";
