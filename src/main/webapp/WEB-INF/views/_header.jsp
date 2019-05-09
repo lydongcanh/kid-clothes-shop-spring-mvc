@@ -11,18 +11,30 @@
 	            <li class="nav-item active">
 	                <a class="nav-link" href="${contextPath}/">Trang chủ</a>
 	            </li>
-	            <li class="nav-item">
-	                <a class="nav-link" href="${contextPath}/loginPage">Tài khoản</a>
-	            </li>
+	            <c:if test="${!param.isLoggedIn}">
+		            <li class="nav-item">
+		                <a class="nav-link" href="${contextPath}/loginPage">Đăng nhập</a>
+		            </li>
+	            </c:if>
+	            <c:if test="${param.isLoggedIn}">
+		            <li class="nav-item dropdown">
+		            	<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+		                <div class="dropdown-menu">
+		                	<a class="dropdown-item" href="#">Hóa đơn</a>
+		                	<a class="dropdown-item" href="#">Thông tin</a>
+		                	<a class="dropdown-item" href="${contextPath}/logout">Đăng xuất</a>
+		                </div>
+		            </li>
+	            </c:if>
 	        </ul>
     	</div>
     	
     	<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
 	        <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	                <button type="button" class="btn btn-primary">
-						Giỏ hàng <span class="badge badge-light">0</span> 
-					</button>
+	                <a href="${contextPath}/cart" class="btn btn-primary">
+						Giỏ hàng <span class="badge badge-light">${param.productCount}</span>
+					</a>
 	            </li>
 	        </ul>
     	</div>

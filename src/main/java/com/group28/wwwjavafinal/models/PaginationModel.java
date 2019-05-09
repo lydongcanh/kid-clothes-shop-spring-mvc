@@ -2,8 +2,6 @@ package com.group28.wwwjavafinal.models;
 
 import java.util.List;
 
-import com.group28.wwwjavafinal.entities.Product;
-
 public class PaginationModel<T> {
 	private List<T> list;
 	private int itemsPerPage;

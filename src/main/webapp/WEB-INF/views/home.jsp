@@ -8,7 +8,10 @@
 	<link href="resources/css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="_header.jsp"></jsp:include>
+	<jsp:include page="_header.jsp">
+		<jsp:param name="isLoggedIn" value="${homeModel.headerModel.isLoggedIn()}"/>
+		<jsp:param name="productCount" value="${homeModel.headerModel.productInCart}"/>
+	</jsp:include>
 	
 	<div class="container-fluid">
 		<!-- Search bar -->
@@ -17,7 +20,7 @@
 			<div class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nhãn hiệu</a>
 				<div class="dropdown-menu">
-					<c:forEach items="${productListModel.brands}" var="brand">
+					<c:forEach items="${homeModel.brands}" var="brand">
 						<a class="dropdown-item" href="#">${brand.name}</a>
 					</c:forEach>
 				</div>
@@ -27,7 +30,7 @@
 			<div class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kích thước</a>
 				<div class="dropdown-menu">
-					<c:forEach items="${productListModel.sizes}" var="size">
+					<c:forEach items="${homeModel.sizes}" var="size">
 						<a class="dropdown-item" href="#">${size.size}</a>
 					</c:forEach>
 				</div>
@@ -37,7 +40,7 @@
 			<div class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Loại</a>
 				<div class="dropdown-menu">
-					<c:forEach items="${productListModel.types}" var="type">
+					<c:forEach items="${homeModel.types}" var="type">
 						<a class="dropdown-item" href="#">${type.name}</a>
 					</c:forEach>
 				</div>
@@ -56,8 +59,9 @@
 		
 		<!-- Product list -->
 		<div class="row">
-			<c:forEach items="${productListModel.list}" var="product">
+			<c:forEach items="${homeModel.productList.list}" var="product">
 				<jsp:include page="_product.jsp">
+					<jsp:param name="productId" value="${product.id}"/>
 					<jsp:param name="imageUrl" value="${product.imageUrl}"/>
 					<jsp:param name="name" value="${product.name}"/>
 					<jsp:param name="price" value="${product.price}"/>
@@ -67,6 +71,7 @@
 	</div>
 	
 	<jsp:include page="_footer.jsp"></jsp:include>
+	
 	<script src="resources/jquery/jquery-3.4.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 </body>

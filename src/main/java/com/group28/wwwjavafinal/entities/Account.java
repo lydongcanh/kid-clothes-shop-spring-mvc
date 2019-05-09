@@ -47,4 +47,10 @@ public class Account extends BaseEntity {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [email=" + email + ", password=" + password + ", isActivated=" + isActivated + ", isAdmin="
+				+ isAdmin + "]";
+	}
 }

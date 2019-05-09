@@ -10,14 +10,20 @@ public class Cart {
 		details = new ArrayList<>();
 	}
 	
-	public void addDetail(CartDetail detail) {
-		if (detail == null)
+	public void addProduct(int productId) {
+		if(updateQuantity(productId, 1))
 			return;
 		
-		if(updateQuantity(detail.getProductId(), detail.getQuantity()))
-			return;
-		
-		details.add(detail);
+		details.add(new CartDetail(productId, 1));
+	}
+	
+	public void removeProduct(int productId) {
+		for(CartDetail detail : details) {
+			if (detail.getProductId() == productId) {
+				details.remove(detail);
+				return;
+			}
+		}
 	}
 	
 	public boolean updateQuantity(int productId, int quantity) {
@@ -29,5 +35,9 @@ public class Cart {
 		}
 		
 		return false;
+	}
+	
+	public List<CartDetail> getDetails() {
+		return details;
 	}
 }

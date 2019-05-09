@@ -8,7 +8,7 @@
 		<img class="card-img-left" style="height:15vw;object-fit:cover;" src="${param.imageUrl}">
 		<div class="card-body">
 			<p class="tag">Giá: ${param.price}$</p>
-			<a href="#" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
+			<a href="${pageContext.request.contextPath}/addProductToCart/${param.productId}" class="btn btn-success btn-sm">Thêm vào giỏ hàng</a>
 		</div>
 	</div>
 </body>

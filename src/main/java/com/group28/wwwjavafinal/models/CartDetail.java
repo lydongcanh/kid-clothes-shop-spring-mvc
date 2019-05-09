@@ -4,6 +4,11 @@ public class CartDetail {
 	private int productId;
 	private int quantity;
 
+	public CartDetail(int productId, int quantity) {
+		this.productId = productId;
+		this.quantity = quantity;
+	}
+
 	public int getProductId() {
 		return productId;
 	}
