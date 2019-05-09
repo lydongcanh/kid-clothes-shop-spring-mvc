@@ -1,15 +1,12 @@
 package com.group28.wwwjavafinal.infrastructure.database.jdbc;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 
-import com.group28.wwwjavafinal.controllers.HomeController;
 import com.group28.wwwjavafinal.infrastructure.database.IRepository;
 
 public abstract class BaseJdbcRepository<T> implements IRepository<T> {
@@ -26,7 +23,6 @@ public abstract class BaseJdbcRepository<T> implements IRepository<T> {
 	
 	@Override
 	public List<T> selectAll() {
-		HomeController.logger.info("selectAll: " + (template == null));
 		if (template == null) {		
 			return null;
 		}
@@ -37,7 +33,6 @@ public abstract class BaseJdbcRepository<T> implements IRepository<T> {
 	@Override
 	public T select(Predicate<T> predicate) {	
 		try {
-			selectAll().stream().forEach(o -> HomeController.logger.info(o.toString()));
 			return selectAll().stream().filter(predicate).findFirst().get();
 		}
 		catch (Exception e) {

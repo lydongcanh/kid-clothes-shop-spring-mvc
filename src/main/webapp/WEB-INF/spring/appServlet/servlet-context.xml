@@ -68,8 +68,4 @@
 		<beans:property name="template" ref="jt"></beans:property>
 	</beans:bean>
 	
-	<beans:bean id="testr" class="com.group28.wwwjavafinal.infrastructure.database.jdbc.TestRepository">
-		<beans:property name="template" ref="jt"></beans:property>
-	</beans:bean>
-
 </beans:beans>

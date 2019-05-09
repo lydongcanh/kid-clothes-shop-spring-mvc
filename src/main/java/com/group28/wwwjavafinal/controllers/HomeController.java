@@ -3,36 +3,21 @@ package com.group28.wwwjavafinal.controllers;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.group28.wwwjavafinal.entities.Account;
 import com.group28.wwwjavafinal.entities.Product;
-import com.group28.wwwjavafinal.entities.ProductBrand;
-import com.group28.wwwjavafinal.entities.ProductSize;
-import com.group28.wwwjavafinal.entities.ProductType;
-import com.group28.wwwjavafinal.infrastructure.database.IRepository;
 import com.group28.wwwjavafinal.infrastructure.database.jdbc.AccountJdbcRepository;
 import com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductBrandJdbcRepository;
 import com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductSizeJdbcRepository;
 import com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductTypeJdbcRepository;
 import com.group28.wwwjavafinal.infrastructure.database.jdbc.ProductsJdbcRepository;
-import com.group28.wwwjavafinal.infrastructure.database.jdbc.TestRepository;
-import com.group28.wwwjavafinal.infrastructure.database.seed.AccountSeedRepository;
-import com.group28.wwwjavafinal.infrastructure.database.seed.ProductBrandSeedRepository;
-import com.group28.wwwjavafinal.infrastructure.database.seed.ProductSeedRepository;
-import com.group28.wwwjavafinal.infrastructure.database.seed.ProductSizeSeedRepository;
-import com.group28.wwwjavafinal.infrastructure.database.seed.ProductTypeSeedRepository;
 import com.group28.wwwjavafinal.models.CartDetail;
 import com.group28.wwwjavafinal.models.CartModel;
 import com.group28.wwwjavafinal.models.HeaderModel;
@@ -41,8 +26,6 @@ import com.group28.wwwjavafinal.models.LoginModel;
 import com.group28.wwwjavafinal.models.PaginationModel;
 import com.group28.wwwjavafinal.services.AccountServices;
 import com.group28.wwwjavafinal.services.CartServices;
-
-import junit.framework.Test;
 
 @Controller
 public class HomeController {
@@ -54,9 +37,6 @@ public class HomeController {
 
 	private AccountServices accountServices;
 	private CartServices cartServices;
-	
-	@Autowired
-	private TestRepository testRepository;
 	
 	@Autowired
 	private AccountJdbcRepository accountRepository;
@@ -112,8 +92,6 @@ public class HomeController {
 		HomeModel homeModel = new HomeModel
 			(productListModel, headerModel, brandRepository.selectAll(), sizeRepository.selectAll(), typeRepository.selectAll());
 
-		testRepository.test();
-		
 		model.addAttribute("homeModel", homeModel);
 		
 		return "home";
